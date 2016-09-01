@@ -12,6 +12,9 @@ import Foundation
 let input1: String = "2+3*2"
 let input2: String = "2*3+2"
 let input3: String = "2*4*3+9*3+5"
+let input4: String = "2+"
+let input5: String = "*3+2"
+let input6: String = "24*3+5"
 
 
 
@@ -30,7 +33,7 @@ func rustyCalculator(input: String) -> String {
     
     // check validity of input equation
     if input.characters.count < 3 {
-        print("Wrong input: equation has to have at least two operands and operation sign!")
+        return "Wrong input: equation has to have at least two operands and operation sign!"
     }
     
     for (index, char) in input.characters.enumerate() {
@@ -94,4 +97,7 @@ func rustyCalculator(input: String) -> String {
 print(rustyCalculator(input1))
 print(rustyCalculator(input2))
 print(rustyCalculator(input3))
+print(rustyCalculator(input4))
+print(rustyCalculator(input5))
+print(rustyCalculator(input6))
 
