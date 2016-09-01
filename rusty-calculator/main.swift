@@ -10,7 +10,8 @@ import Foundation
 
 
 let input1: String = "2+3*2"
-let input2: String = "2*4*3+9*3+5"
+let input2: String = "2*3+2"
+let input3: String = "2*4*3+9*3+5"
 
 
 
@@ -42,7 +43,6 @@ func rustyCalculator(input: String) -> String {
         // work with first char in equation
         if index == 0 {
             if numbers.characters.contains(char) {
-                print("Index 0 \(index)")
                 output.append(char)
             } else {
                 return "Equation has to begin from number, not operation!"
@@ -51,11 +51,16 @@ func rustyCalculator(input: String) -> String {
         
         // work with chars at odd positions in equation
         if index % 2 != 0 && index > 0 && operations.characters.contains(char) {
-            print("POSITION 0DD \(index)")
             if char == "*" {
                 counterForMultipliers += 1
             } else if char == "+" {
                 counterForPluses += 1
+                if counterForMultipliers > 0 {
+                    for _ in 0...counterForMultipliers - 1 {
+                        output += "*"
+                    }
+                    counterForMultipliers = 0
+                }
             } else {
                 return "Wrong input: equation can not contain number with more then one digit! There is not an operation at position \(index), have to be a operation!"
             }
@@ -65,7 +70,6 @@ func rustyCalculator(input: String) -> String {
         // work with chars at even positions in equation
         if index % 2 == 0 && index > 0 {
             if numbers.characters.contains(char) {
-                print("POSITION EVEN \(index)")
                 output.append(char)
             } else {
                 return "Wrong input: equation can not contain number with more then one digit! There is not a number at position \(index), have to be a number!"
@@ -73,10 +77,21 @@ func rustyCalculator(input: String) -> String {
         }
     }
     
+    if counterForMultipliers > 0 {
+        for _ in 0...counterForMultipliers - 1 {
+            output.appendContentsOf("*")
+        }
+    }
+    
+    for _ in 0...counterForPluses - 1 {
+        output.appendContentsOf("+")
+    }
     return output
     
 }
 
 
 print(rustyCalculator(input1))
+print(rustyCalculator(input2))
+print(rustyCalculator(input3))
 
