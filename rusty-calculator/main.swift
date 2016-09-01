@@ -95,9 +95,20 @@ func rustyCalculator(input: String) -> String {
 
 
 print(rustyCalculator(input1))
-print(rustyCalculator(input2))
-print(rustyCalculator(input3))
-print(rustyCalculator(input4))
-print(rustyCalculator(input5))
-print(rustyCalculator(input6))
+// 232*+
 
+print(rustyCalculator(input2))
+// 23*2+
+
+print(rustyCalculator(input3))
+// 243**93*5++
+
+print(rustyCalculator(input4))
+// Wrong input: equation has to have at least two operands and operation sign!
+
+print(rustyCalculator(input5))
+// Equation has to begin from number, not operation!
+
+print(rustyCalculator(input6))
+// Wrong input: equation can not contain number with more then one digit! 
+// There is not a number at position 2, have to be a number!
