@@ -24,7 +24,7 @@ func rustyCalculator(input: String) -> String {
     var output: String = ""
     
     // valid chars can be in equation
-    let numbers: String = "012345679"
+    let numbers: String = "0123456789"
     let operations: String = "+*"
     
     // counters to hold operations as "+" and "*"
@@ -32,7 +32,7 @@ func rustyCalculator(input: String) -> String {
     var counterForMultipliers: Int = 0
     
     // check validity of input equation
-    if input.characters.count < 3 {
+    if input.characters.count % 2 == 0 {
         return "Wrong input: equation has to have at least two operands and operation sign!"
     }
     
